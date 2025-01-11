@@ -1,0 +1,60 @@
+""" 
+Alex is practicing programming and is curious about prime and non-prime digits. He wants to write a program that calculates the sum of the non-prime digits in a given integer using loops.
+
+
+
+Help Alex to complete his task.
+
+
+
+Example:
+
+Input:
+
+845
+
+
+
+output:
+
+12
+
+
+
+Explanation:
+
+Digits: 8 (non-prime), 4 (non-prime), 5 (prime)
+
+The sum of Non-Prime Digits: 8 + 4 = 12
+
+Output: 12
+
+Input format :
+The input consists of a single integer X.
+
+Output format :
+The output prints an integer representing the sum of non-prime digits in X.
+
+"""
+
+
+# You are using Python
+number=int(input())
+sum_non_prime_digits = 0
+absolute_number = abs(number)
+
+while absolute_number > 0:
+    digit = absolute_number % 10
+    is_prime =True
+    
+    if digit <= 1:
+        is_prime = False
+    else:
+        for i in range(2, int(digit**0.5)+1):
+            if digit % i == 0:
+                 is_prime = False
+                 break
+    if not is_prime:
+        sum_non_prime_digits += digit
+        absolute_number //=10
+print(sum_non_prime_digits)
